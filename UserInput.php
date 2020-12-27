@@ -12,6 +12,24 @@ class UserInput
     {
         $this->calculator = new Calculator($firstNumber, $secondNumber);
     }
+
+    public function printResult(float|string $result, string $mathematicalOperation): void
+    {
+        if (gettype($result) === Calculator::DOUBLE_TYPE) {
+            echo 'Result of '. $mathematicalOperation . ' of numbers: ' . $this->calculator->getFirstNumber()
+                . ' and ' . $this->calculator->getSecondNumber() . ' is ' .  $result . "\n";
+        } else {
+            echo $result . "\n";
+        }
+    }
+
+    public function calculateAll(): void
+    {
+        $mathematicalOperations = $this->calculator->getMathematicalOperations();
+        foreach ($mathematicalOperations as $mathematicalOperation => $result) {
+            $this->printResult($result, $mathematicalOperation);
+        }
+    }
 }
 
 echo 'Enter, a first number: ';
@@ -21,9 +39,9 @@ $secondNumber = (int)readline();
 
 $userInput = new UserInput($firstNumber, $secondNumber);
 
-$userInput->calculator->calculateAll();
+$userInput->calculateAll();
 
 $userInput->calculator->setFirstNumber(15);
 $userInput->calculator->setSecondNumber(-5);
 
-$userInput->calculator->printResult($userInput->calculator->add(), Calculator::ADD);
+$userInput->printResult($userInput->calculator->add(), Calculator::ADD);

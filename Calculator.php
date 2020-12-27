@@ -11,7 +11,7 @@ class Calculator
     public CONST FACTORIAL = 'factorial';
     public CONST TO_THE_POWER_OF = 'to the power of';
 
-    private CONST DOUBLE_TYPE = 'double';
+    public CONST DOUBLE_TYPE = 'double';
 
     private float $firstNumber;
     private float $secondNumber;
@@ -25,6 +25,16 @@ class Calculator
     public function setFirstNumber(float $firstNumber): void
     {
         $this->firstNumber = $firstNumber;
+    }
+
+    public function getFirstNumber(): float
+    {
+        return $this->firstNumber;
+    }
+
+    public function getSecondNumber(): float
+    {
+        return $this->secondNumber;
     }
 
     public function setSecondNumber(float $secondNumber): void
@@ -99,26 +109,16 @@ class Calculator
         }
     }
 
-    private function getMathematicalOperations(): array
+    public function getMathematicalOperations(): array
     {
-       return [
+        return [
             self::ADD => $this->add(),
             self::SUBTRACT => $this->subtract(),
             self::MULTIPLY => $this->multiply(),
             self::DIVIDE => $this->divide(),
             self::FACTORIAL => $this->factorial(),
             self::TO_THE_POWER_OF => $this->toThePowerOf()
-       ];
+        ];
     }
 }
-
-
-//$calculator = new Calculator(3, 3);
-//
-//$calculator->calculateAll();
-//
-//$calculator->setFirstNumber(15);
-//$calculator->setSecondNumber(-5);
-//
-//$calculator->printResult($calculator->add(), Calculator::ADD);
 
