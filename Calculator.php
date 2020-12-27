@@ -10,17 +10,6 @@ class Calculator
     public CONST DIVIDE = 'divide';
     public CONST FACTORIAL = 'factorial';
     public CONST TO_THE_POWER_OF = 'to the power of';
-    public CONST ALL_MATHEMATICAL_OPERATIONS = 'all';
-
-    public CONST MATHEMATICAL_OPERATIONS = [
-        self::ADD => 1,
-        self::SUBTRACT => 2,
-        self::MULTIPLY => 3,
-        self::DIVIDE => 4,
-        self::FACTORIAL => 5,
-        self::TO_THE_POWER_OF => 6,
-        self::ALL_MATHEMATICAL_OPERATIONS => 7
-    ];
 
     public CONST DOUBLE_TYPE = 'double';
 
@@ -33,11 +22,6 @@ class Calculator
         $this->secondNumber = $secondNumber;
     }
 
-    public function setFirstNumber(float $firstNumber): void
-    {
-        $this->firstNumber = $firstNumber;
-    }
-
     public function getFirstNumber(): float
     {
         return $this->firstNumber;
@@ -46,11 +30,6 @@ class Calculator
     public function getSecondNumber(): float
     {
         return $this->secondNumber;
-    }
-
-    public function setSecondNumber(float $secondNumber): void
-    {
-        $this->secondNumber = $secondNumber;
     }
 
     public function add(): float

@@ -6,8 +6,16 @@ include ('Calculator.php');
 
 class UserInput
 {
-    public Calculator $calculator;
+    private Calculator $calculator;
     private int $chosenMathematicalOperation;
+
+    private CONST ADD = 1;
+    private CONST SUBTRACT = 2;
+    private CONST MULTIPLY = 3;
+    private CONST DIVIDE = 4;
+    private CONST FACTORIAL = 5;
+    private CONST TO_THE_POWER_OF = 6;
+    private CONST ALL_MATHEMATICAL_OPERATIONS = 7;
 
     public function __construct(int $firstNumber, int $secondNumber, int $chosenMathematicalOperation)
     {
@@ -35,8 +43,7 @@ class UserInput
 
     private function isCalculateAllOption()
     {
-        return $this->chosenMathematicalOperation
-            === Calculator::MATHEMATICAL_OPERATIONS[Calculator::ALL_MATHEMATICAL_OPERATIONS];
+        return $this->chosenMathematicalOperation === self::ALL_MATHEMATICAL_OPERATIONS;
     }
 
     public function calculateForChosenMathematicalOperation(): void
@@ -47,12 +54,12 @@ class UserInput
         }
 
         [$result, $mathematicalOperation] = match ($this->chosenMathematicalOperation) {
-            Calculator::MATHEMATICAL_OPERATIONS[Calculator::ADD] => [$this->calculator->add(), Calculator::ADD],
-            Calculator::MATHEMATICAL_OPERATIONS[Calculator::SUBTRACT] => [$this->calculator->subtract(), Calculator::SUBTRACT],
-            Calculator::MATHEMATICAL_OPERATIONS[Calculator::MULTIPLY] => [$this->calculator->multiply(), Calculator::MULTIPLY],
-            Calculator::MATHEMATICAL_OPERATIONS[Calculator::DIVIDE] => [$this->calculator->divide(), Calculator::DIVIDE],
-            Calculator::MATHEMATICAL_OPERATIONS[Calculator::FACTORIAL] => [$this->calculator->factorial(), Calculator::FACTORIAL],
-            Calculator::MATHEMATICAL_OPERATIONS[Calculator::TO_THE_POWER_OF] => [$this->calculator->toThePowerOf(), Calculator::TO_THE_POWER_OF],
+            self::ADD => [$this->calculator->add(), Calculator::ADD],
+            self::SUBTRACT => [$this->calculator->subtract(), Calculator::SUBTRACT],
+            self::MULTIPLY => [$this->calculator->multiply(), Calculator::MULTIPLY],
+            self::DIVIDE => [$this->calculator->divide(), Calculator::DIVIDE],
+            self::FACTORIAL => [$this->calculator->factorial(), Calculator::FACTORIAL],
+            self::TO_THE_POWER_OF => [$this->calculator->toThePowerOf(), Calculator::TO_THE_POWER_OF],
             default => ['Error, wrong mathematical operation.', ''],
         };
 
