@@ -91,24 +91,6 @@ class Calculator
         return $thePowerOf;
     }
 
-    public function printResult(float|string $result, string $mathematicalOperation): void
-    {
-        if (gettype($result) === self::DOUBLE_TYPE) {
-            echo 'Result of '. $mathematicalOperation . ' of numbers: ' . $this->firstNumber
-                . ' and ' . $this->secondNumber . ' is ' .  $result . "\n";
-        } else {
-            echo $result . "\n";
-        }
-    }
-
-    public function calculateAll(): void
-    {
-        $mathematicalOperations = $this->getMathematicalOperations();
-        foreach ($mathematicalOperations as $mathematicalOperation => $result) {
-            $this->printResult($result, $mathematicalOperation);
-        }
-    }
-
     public function getMathematicalOperations(): array
     {
         return [
