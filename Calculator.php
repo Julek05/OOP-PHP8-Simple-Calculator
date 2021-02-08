@@ -2,7 +2,9 @@
 
 declare (strict_types=1);
 
-class Calculator
+include('CalculatorInterface.php');
+
+class Calculator implements CalculatorInterface
 {
     public CONST ADD = 'add';
     public CONST SUBTRACT = 'subtract';

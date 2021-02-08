@@ -2,11 +2,12 @@
 
 declare (strict_types=1);
 
-include ('Calculator.php');
+include('Calculator.php');
+include('UserInputInterface.php');
 
-class UserInput
+class UserInput implements UserInputInterface
 {
-    private Calculator $calculator;
+    private CalculatorInterface $calculator;
     private int $chosenMathematicalOperation;
 
     private CONST ADD = 1;
@@ -17,13 +18,13 @@ class UserInput
     private CONST TO_THE_POWER_OF = 6;
     private CONST ALL_MATHEMATICAL_OPERATIONS = 7;
 
-    public function __construct(int $firstNumber, int $secondNumber, int $chosenMathematicalOperation)
+    public function __construct(CalculatorInterface $calculator, int $chosenMathematicalOperation)
     {
-        $this->calculator = new Calculator($firstNumber, $secondNumber);
+        $this->calculator = $calculator;
         $this->chosenMathematicalOperation = $chosenMathematicalOperation;
     }
 
-    public function printResult(float|string $result, string $mathematicalOperation = ''): void
+    private function printResult(float|string $result, string $mathematicalOperation = ''): void
     {
         if (gettype($result) === Calculator::DOUBLE_TYPE) {
             echo "\nResult of " . $mathematicalOperation . ' of numbers: ' . $this->calculator->getFirstNumber()
@@ -41,7 +42,7 @@ class UserInput
         }
     }
 
-    private function isCalculateAllOption()
+    private function isCalculateAllOption(): bool
     {
         return $this->chosenMathematicalOperation === self::ALL_MATHEMATICAL_OPERATIONS;
     }
@@ -77,7 +78,7 @@ echo "Choose, a mathematical operation: \n 1 - " . Calculator::ADD . "\n 2 - " .
     "\n 6 - " . Calculator::TO_THE_POWER_OF . "\n 7 - all\n";
 $mathematicalOperation = (int)readline();
 
-$userInput = new UserInput($firstNumber, $secondNumber, $mathematicalOperation);
+$userInput = new UserInput(new Calculator($firstNumber, $secondNumber), $mathematicalOperation);
 
 $userInput->calculateForChosenMathematicalOperation();
 
