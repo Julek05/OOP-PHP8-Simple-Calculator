@@ -10,13 +10,13 @@ class UserInput implements UserInputInterface
     private CalculatorInterface $calculator;
     private int $chosenMathematicalOperation;
 
-    private CONST ADD = 1;
-    private CONST SUBTRACT = 2;
-    private CONST MULTIPLY = 3;
-    private CONST DIVIDE = 4;
-    private CONST FACTORIAL = 5;
-    private CONST TO_THE_POWER_OF = 6;
-    private CONST ALL_MATHEMATICAL_OPERATIONS = 7;
+    private const ADD = 1;
+    private const SUBTRACT = 2;
+    private const MULTIPLY = 3;
+    private const DIVIDE = 4;
+    private const FACTORIAL = 5;
+    private const TO_THE_POWER_OF = 6;
+    private const ALL_MATHEMATICAL_OPERATIONS = 7;
 
     public function __construct(CalculatorInterface $calculator, int $chosenMathematicalOperation)
     {
@@ -27,8 +27,8 @@ class UserInput implements UserInputInterface
     private function printResult(float|string $result, string $mathematicalOperation = ''): void
     {
         if (gettype($result) === Calculator::DOUBLE_TYPE) {
-            echo "\nResult of " . $mathematicalOperation . ' of numbers: ' . $this->calculator->getFirstNumber()
-                . ' and ' . $this->calculator->getSecondNumber() . ' is ' .  $result . "\n";
+            echo "\nResult of {$mathematicalOperation} of numbers: {$this->calculator->getFirstNumber()}" .
+                " and {$this->calculator->getSecondNumber()} is {$result} \n";
         } else {
             echo $result . "\n";
         }

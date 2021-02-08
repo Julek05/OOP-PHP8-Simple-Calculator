@@ -6,14 +6,14 @@ include('CalculatorInterface.php');
 
 class Calculator implements CalculatorInterface
 {
-    public CONST ADD = 'add';
-    public CONST SUBTRACT = 'subtract';
-    public CONST MULTIPLY = 'multiply';
-    public CONST DIVIDE = 'divide';
-    public CONST FACTORIAL = 'factorial';
-    public CONST TO_THE_POWER_OF = 'to the power of';
+    public const ADD = 'add';
+    public const SUBTRACT = 'subtract';
+    public const MULTIPLY = 'multiply';
+    public const DIVIDE = 'divide';
+    public const FACTORIAL = 'factorial';
+    public const TO_THE_POWER_OF = 'to the power of';
 
-    public CONST DOUBLE_TYPE = 'double';
+    public const DOUBLE_TYPE = 'double';
 
     private float $firstNumber;
     private float $secondNumber;
